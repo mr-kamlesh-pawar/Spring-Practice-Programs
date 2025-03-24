@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<!-- bean definitions here -->
+	<bean class="in.kamlesh.services.BankTransactions" id="bankID" />
+	<bean class="in.kamlesh.aspects.LoggingAspects" id="logId" />
+
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean"
+		id="proxy">
+		<property name="target" ref="bankID"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>logId</value>
+			</list>
+		</property>
+
+	</bean>
+
+</beans>
