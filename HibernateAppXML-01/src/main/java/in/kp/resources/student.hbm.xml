@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+	    
+	    <class name="in.kp.beans.Student" table="std_register">
+			    <id name="id" column="std_id"></id>
+			    <property  name="name" column="std_name"></property >
+			    <property  name="email" column="std_email"></property >
+			    <property  name="rollno" column="std_rollno"></property >
+			    <property  name="gender" column="std_gender"></property >
+			    <property  name="city" column="std_city"></property >
+	    
+	    </class>
+    
+    
+    </hibernate-mapping>
