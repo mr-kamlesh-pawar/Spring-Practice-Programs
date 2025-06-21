@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        https://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!-- ✅ Required for Spring Security 6 with MvcRequestMatcher -->
+    <beans:bean name="mvcHandlerMappingIntrospector" class="org.springframework.web.servlet.handler.HandlerMappingIntrospector"/>
+
+    <http auto-config="true">
+        <http-basic/>
+        <intercept-url pattern="/adminPanel" access="hasRole('ROLE_ADMIN')"/>
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder hash="bcrypt"/>
+            <user-service>
+                <user name="admin" password="$2a$12$Yl/v4tAIkFAQpchbJ2BZ1OWWMPYRbe5tmpf7uWULZTKotEnBjoh3S" authorities="ROLE_ADMIN"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>
